@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://b5omfskokegdc"]
+[gd_scene load_steps=7 format=3 uid="uid://b5omfskokegdc"]
 
 [ext_resource type="Script" path="res://src/player.gd" id="1_2clb6"]
 [ext_resource type="Texture2D" uid="uid://7c2jhdl3xy5a" path="res://icon.svg" id="1_kru2v"]
+[ext_resource type="PackedScene" uid="uid://b6luer5pt8cnv" path="res://scn/obstacles/base-obstacle.tscn" id="3_juqbe"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_b6kgd"]
 
@@ -34,3 +35,6 @@ texture = ExtResource("1_kru2v")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource("RectangleShape2D_y7jhy")
+
+[node name="Obstacle" parent="." instance=ExtResource("3_juqbe")]
+position = Vector2(599, 197)
