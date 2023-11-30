@@ -66,3 +66,4 @@ shape = SubResource("RectangleShape2D_y7jhy")
 [node name="Obstacle" parent="." instance=ExtResource("3_juqbe")]
 position = Vector2(599, 197)
 collision_layer = 512
+sync_to_physics = false
