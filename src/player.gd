@@ -14,4 +14,4 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed('ui_accept'):
 		velocity.y -= jump_velocity * delta
 
-	move_and_collide(delta * velocity)
+	move_and_slide()
