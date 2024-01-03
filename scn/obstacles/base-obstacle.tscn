@@ -7,9 +7,8 @@
 resource_local_to_scene = true
 size = Vector2(128, 128)
 
-[node name="Obstacle" type="AnimatableBody2D"]
+[node name="Obstacle" type="Area2D"]
 collision_layer = 512
-sync_to_physics = false
 script = ExtResource("1_kxhnx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
