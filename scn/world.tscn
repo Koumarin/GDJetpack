@@ -1,8 +1,21 @@
-[gd_scene load_steps=9 format=3 uid="uid://b5omfskokegdc"]
+[gd_scene load_steps=14 format=3 uid="uid://b5omfskokegdc"]
 
+[ext_resource type="Texture2D" uid="uid://cmk2h4735o241" path="res://dat/spr/background/background.png" id="1_0iaa2"]
 [ext_resource type="Script" path="res://src/player.gd" id="1_2clb6"]
 [ext_resource type="Texture2D" uid="uid://7c2jhdl3xy5a" path="res://icon.svg" id="1_kru2v"]
+[ext_resource type="Texture2D" uid="uid://5vsdqkjuorii" path="res://dat/spr/background/far-buildings.png" id="2_dfncl"]
 [ext_resource type="PackedScene" uid="uid://pes53j50xvxa" path="res://scn/obstacles/missile.tscn" id="3_mxakt"]
+[ext_resource type="Texture2D" uid="uid://cyp18lglcdgil" path="res://dat/spr/background/buildings.png" id="3_s030r"]
+[ext_resource type="Texture2D" uid="uid://detbvktavo44c" path="res://dat/spr/background/foreground.png" id="4_ud1co"]
+
+[sub_resource type="GDScript" id="GDScript_0crmr"]
+script/source = "extends ParallaxBackground
+
+@export var scroll_speed: int
+
+func _process(delta: float) -> void:
+	scroll_base_offset.x -= delta * scroll_speed
+"
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_b6kgd"]
 
@@ -26,6 +39,47 @@ normal = Vector2(1, 0)
 size = Vector2(64, 64)
 
 [node name="World" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+script = SubResource("GDScript_0crmr")
+scroll_speed = 50
+
+[node name="Background" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Background"]
+position = Vector2(0, -40)
+scale = Vector2(4, 4)
+texture = ExtResource("1_0iaa2")
+centered = false
+
+[node name="Buildings 1" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2(852, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Buildings 1"]
+position = Vector2(0, 32)
+scale = Vector2(4, 4)
+texture = ExtResource("2_dfncl")
+centered = false
+
+[node name="Buildings 2" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(2, 2)
+motion_mirroring = Vector2(1088, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Buildings 2"]
+scale = Vector2(4, 4)
+texture = ExtResource("3_s030r")
+centered = false
+
+[node name="Foreground" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(4, 4)
+motion_mirroring = Vector2(1088, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Foreground"]
+position = Vector2(0, 184)
+scale = Vector2(4, 4)
+texture = ExtResource("4_ud1co")
+centered = false
 
 [node name="Floor" type="StaticBody2D" parent="."]
 position = Vector2(0, 600)
@@ -65,3 +119,4 @@ shape = SubResource("RectangleShape2D_y7jhy")
 
 [node name="Missile" parent="." instance=ExtResource("3_mxakt")]
 position = Vector2(494, 202)
+collision_layer = 1
