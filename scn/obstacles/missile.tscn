@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://pes53j50xvxa"]
+
+[ext_resource type="PackedScene" uid="uid://b6luer5pt8cnv" path="res://scn/obstacles/base-obstacle.tscn" id="1_pyohq"]
+[ext_resource type="Texture2D" uid="uid://cxbyl2c62nuud" path="res://dat/spr/obstacles/missile.png" id="2_4r1ed"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f343j"]
+resource_local_to_scene = true
+size = Vector2(50, 14)
+
+[node name="Missile" instance=ExtResource("1_pyohq")]
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(2, 2)
+texture = ExtResource("2_4r1ed")
+centered = false
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(25, 15)
+shape = SubResource("RectangleShape2D_f343j")

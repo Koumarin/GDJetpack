@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://src/player.gd" id="1_2clb6"]
 [ext_resource type="Texture2D" uid="uid://7c2jhdl3xy5a" path="res://icon.svg" id="1_kru2v"]
-[ext_resource type="PackedScene" uid="uid://b6luer5pt8cnv" path="res://scn/obstacles/base-obstacle.tscn" id="3_juqbe"]
+[ext_resource type="PackedScene" uid="uid://pes53j50xvxa" path="res://scn/obstacles/missile.tscn" id="3_mxakt"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_b6kgd"]
 
@@ -63,7 +63,5 @@ texture = ExtResource("1_kru2v")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 shape = SubResource("RectangleShape2D_y7jhy")
 
-[node name="Obstacle" parent="." instance=ExtResource("3_juqbe")]
-position = Vector2(599, 197)
-collision_layer = 512
-sync_to_physics = false
+[node name="Missile" parent="." instance=ExtResource("3_mxakt")]
+position = Vector2(494, 202)
